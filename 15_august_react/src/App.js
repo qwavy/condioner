@@ -1,10 +1,12 @@
 
 
-import AirCoinditioner from './AirCoinditioner'
+// import AirCoinditioner from './AirCoinditioner'
+import Converter from './Converter'
 
 function App(){
   return(
-    <AirCoinditioner/>
+    // <AirCoinditioner/>
+    <Converter/>
   )
 }
 

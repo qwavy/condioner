@@ -1,0 +1,69 @@
+body { 
+    margin: 0; 
+    padding: 0; 
+    height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+} 
+ 
+.container { 
+    text-align: center; 
+    width: 400px; 
+    height: 500px; 
+    background-color: #2b5870; 
+    border-radius: 20px; 
+    box-shadow: 20px 20px 15px 15px rgba(0,0,0,0.5); 
+} 
+ 
+.display-temperature-container { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    height: 60%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+ 
+.display-temperature { 
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%; 
+    background-color: black; 
+} 
+ 
+.temperature { 
+    color: white; 
+    border-radius: 50%; 
+    border-color: 2px solid black; 
+} 
+ 
+.buttons-container { 
+    display: flex; 
+    justify-content: space-evenly; 
+    margin-top: 25px; 
+}
+.power-btn-on{
+    background-color: green;
+}
+.power-btn-off{
+    background-color: red;
+}
+
+.normal{
+    background-color: #035aa6;
+}
+.hot{
+    background-color: red;
+}
+.power-btn-on{
+    background-color: green;
+}
+.power-btn-off{
+    background-color: green;
+}
+.off{
+    background-color: #2b5870;
+}

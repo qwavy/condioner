@@ -1,45 +1,14 @@
 import { useState } from 'react'
-function Converter({rus_eng}) {
-    const [amount, setAmount] = useState('')
-    const [res, setRes] = useState(0)
-    const [chet,setChet] = useState('')
-    // // // console.log(amount)
-    // // return (
-    // //     <div className='container'>
-    // //         <h1>Converter</h1>
-    // //         <div className='form1'>
-    // //             <input type="text" placeholder="$" value={amount} onChange={event => setAmount(event.target.value)}></input>
-    // //             {/* <button>check</button> */}
-    // //         </div>
-    // //         <div className='form2'>
-    // //             <h3>Result {amount * 476}</h3>
-    // //             {/* <input type="text" placeholder="₸"></input> */}
-    // //         </div>
-    // //     </div>
-    // // )
-    let sum = 0
-    const handleCheck = () => {
-        if (amount % 2 === 0){
-            setChet('нечетное')
-        }else{
-            setChet('четное')
-        }
+function Converter({ rus_eng }) {
 
-            for (let i = 0; i < amount.length; i++) {
-                sum += +amount[i]
-                setRes(sum)
-                // console.log(sum)
-            }
-        console.log(res)
-        // return (res)
 
-    }
+
     // return (
 
     // )
     const [russian, setRussian] = useState('')
     // const [englsih, setEnglish] = useState('')
-    const [english,setEnglish] = useState('')
+    const [english, setEnglish] = useState('')
     const [result, setResult] = useState('')
 
     const translate_rus = () => {
@@ -54,14 +23,14 @@ function Converter({rus_eng}) {
         //         alert('нет такого слова')
         //         setResult('')
         // }
-        for(let i = 0;i < rus_eng.length;i++){
-            if(rus_eng[i].rus == russian.toLowerCase()){
+        for (let i = 0; i < rus_eng.length; i++) {
+            if (rus_eng[i].rus == russian.toLowerCase()) {
                 setResult(rus_eng[i].eng)
                 break;
-                
-            }else if(russian == ''){
+
+            } else if (russian == '') {
                 console.log('введите значение')
-            }else{
+            } else {
                 console.log('нету такого слова')
                 break;
 
@@ -70,50 +39,69 @@ function Converter({rus_eng}) {
 
     }
     const translate_eng = () => {
-        for(let i = 0;i < rus_eng.length;i++){
-            if(rus_eng[i].eng == english.toLowerCase()){
+        for (let i = 0; i < rus_eng.length; i++) {
+            if (rus_eng[i].eng == english.toLowerCase()) {
                 setResult(rus_eng[i].rus)
                 break;
 
-                
-            }else if(english == ''){
+
+            } else if (english == '') {
                 console.log('введите значение')
-            }else{
+            } else {
                 console.log('нету такого слова')
                 break;
             }
         }
     }
+    const [amount, setAmount] = useState('')
+    const [res, setRes] = useState(0)
+    const [chet, setChet] = useState('')
+    const [nechet, setNechet] = useState('')
+    let sum2 = 0
+    const [sum1, setSum1] = useState('')
+    let sum234 = 0
+    let sum345 = 0
+    const [total1, setTotal1] = useState()
+    const [total2, setTotal2] = useState()
+
+    const [chetArray, setChetArray] = useState([])
+    const [nechetArray, setNechetArray] = useState([])
+
+    const handleCheck = () => {
+        for (let i = 0; i < amount.length; i++) {
+            if (amount[i] % 2 === 0) {
+                chetArray.push(amount[i])
+                sum234 += Number(amount[i])
+                setTotal1(sum234)
+                console.log(total1)
+            }else if(amount[i] % 2 === 1){
+                nechetArray.push(amount[i])
+                sum345 += Number(amount[i])
+                setTotal2(sum345)
+            }
+        }
+    }
     return (
         <div>
-            <div>
-                <input type='text' value={russian} onChange={event => setRussian(event.target.value)} placeholder='русское'>
-
-                </input>
-
-                <button onClick={translate_rus}>
-                    перевести на англиский
-            </button>
-            <input type='text' value={english} onChange={event => setEnglish(event.target.value)} placeholder='англиское'>
-                </input>
-            <button onClick={translate_eng}>
-                    перевести на русский
-            </button>
-                <p>
-                    {result}
-                    {/* {rus_eng.map((rus) => <li>
-                        {rus}
-                    </li>)} */}
-                </p>
-            </div>
             <div className='container'>
-            <h1>Вычеслить сумму чисел</h1>
-            <input type="number" value={amount} onChange={event => setAmount(event.target.value)}></input>
-            <p>{res}</p>
-            <p>{chet}</p>
+                <h1>Вычеслить сумму чисел</h1>
+                <input type="number" value={amount} onChange={event => setAmount(event.target.value)}></input>
+                <div>
 
-            <button onClick={handleCheck}>click</button>
-        </div>
+
+                    <ul>
+                        {chetArray.map(item => <li key={item}>{item}</li>)}
+                    </ul>
+                    total  {total1}
+                    <div>
+                        <ul>
+                            {nechetArray.map(item => <li key={item}>{item}</li>)}
+                        </ul>
+                        total  {total2}
+                    </div>
+                </div>
+                <button onClick={handleCheck}>click</button>
+            </div>
         </div>
     )
 }
